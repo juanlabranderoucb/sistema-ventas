@@ -19,31 +19,85 @@ Sistema web integral para la gestión de ventas, compras, inventario, clientes y
 -   **Base de Datos**: PostgreSQL 16+.
 -   **Herramientas**: Vite, Composer, NPM.
 
-## ✅ Testing
+## ✅ Testing & Quality Gates
 
-Para ejecutar las pruebas automatizadas del proyecto:
+Este proyecto implementa múltiples capas de control de calidad:
 
-### Pruebas de Backend (PHPUnit)
-
+### 🧪 Tests de Backend (PHPUnit)
 ```bash
 php artisan test
 ```
 
-### Pruebas de Frontend (si aplica)
-
+### 🧪 Tests de Frontend (Vitest)
 ```bash
-npm run test
+npm run test              # Ejecutar tests una vez
+npm run test:watch        # Modo watch para desarrollo
+npm run test:coverage     # Con reporte de cobertura
 ```
 
-## 🔄 Integración Continua (CI)
+### 🎨 Formateo de Código
+```bash
+# PHP (Laravel Pint)
+composer format       # Auto-formatear
+composer format:check # Solo verificar
 
-Este proyecto está preparado para CI. Se recomienda configurar un pipeline (ej. GitHub Actions) que ejecute:
+# JavaScript (ESLint)
+npm run lint          # Verificar
+npm run lint:fix      # Auto-corregir
+```
 
-1.  Linting de código (PHP_CodeSniffer / ESLint).
-2.  Análisis estático (PHPStan).
-3.  Pruebas unitarias y de integración (PHPUnit).
+### 🛡️ Análisis Estático
+```bash
+composer stan          # PHPStan análisis
+composer stan:baseline # Generar baseline
+```
 
-Asegúrese de configurar las variables de entorno necesarias en su proveedor de CI para la conexión a base de datos de pruebas.
+### ✅ Control de Calidad Completo
+```bash
+composer quality       # PHP: format + stan + tests
+```
+
+### 🚫 Pre-commit Hook
+
+El proyecto incluye un **pre-commit hook** automático que ejecuta:
+1. Laravel Pint (formateo PHP)
+2. PHPStan (análisis estático)
+3. ESLint (linting Vue)
+4. Vitest (tests de componentes)
+
+Para bypassearlo temporalmente: `git commit --no-verify`
+
+### 📊 Cobertura de Tests
+
+Los reportes de cobertura se generan en:
+- Backend: `coverage/` (PHPUnit)
+- Frontend: `coverage/` (Vitest)
+
+Consulta guías detalladas:
+- [PINT_GUIDE.md](PINT_GUIDE.md) - Formateo PHP
+- [VITEST_GUIDE.md](VITEST_GUIDE.md) - Tests de componentes Vue
+
+## 🔄 Integración Continua (CI/CD)
+
+Este proyecto está preparado para CI/CD. Pipeline recomendado:
+
+### Backend (PHP)
+1. `composer install --no-dev --optimize-autoloader`
+2. `composer format:check` - Validar formato
+3. `composer stan` - Análisis estático
+4. `php artisan test` - Tests unitarios
+
+### Frontend (JavaScript)
+1. `npm ci` - Instalación limpia
+2. `npm run lint` - Validar código
+3. `npm run test` - Tests de componentes
+4. `npm run build` - Build producción
+
+Consulta [CI_CD_TUTORIAL.md](CI_CD_TUTORIAL.md) para configuración detallada.
+
+Variables de entorno necesarias en CI:
+- `DB_CONNECTION`, `DB_HOST`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`
+- `APP_KEY`, `APP_ENV=testing`
 
 ## 📋 Requisitos Previos
 
