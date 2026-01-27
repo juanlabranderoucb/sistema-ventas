@@ -28,7 +28,7 @@ jobs:
           restore-keys: composer-${{ runner.os }}-
 
       - name: Install Composer Dependencies
-        run: composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader
+        run: composer install --prefer-dist --no-interaction --optimize-autoloader
 
       - name: Check Code Format (Pint)
         run: ./vendor/bin/pint --test
