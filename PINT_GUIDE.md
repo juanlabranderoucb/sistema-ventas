@@ -12,28 +12,34 @@ Este proyecto utiliza **Laravel Pint** para asegurar que todo el código siga lo
 
 ### Auto-formatear código
 ```bash
-composer run format
+composer format
 ```
 Formatea automáticamente todos los archivos PHP según las reglas de Pint.
 
 ### Verificar formato (sin cambios)
 ```bash
-composer run format:check
+composer format:check
 ```
 Verifica si el código cumple con los estándares sin hacer cambios.
 
+### Análisis estático
+```bash
+composer stan
+```
+Ejecuta PHPStan para análisis estático del código.
+
 ### Control de calidad completo
 ```bash
-composer run quality
+composer quality
 ```
-Ejecuta verificación de formato + pruebas unitarias.
+Ejecuta verificación de formato + análisis estático + pruebas unitarias.
 
 ## Pre-commit Hook
 
 Se ha configurado un **pre-commit hook** automático que:
 - ✅ Ejecuta Pint antes de cada commit
 - ❌ Rechaza commits con código mal formateado
-- 💡 Sugiere ejecutar `composer run format` si es necesario
+- 💡 Sugiere ejecutar `composer format` si es necesario
 
 ### Bypass (solo si es necesario)
 ```bash
@@ -54,7 +60,7 @@ git commit --no-verify
 
 En pipelines de CI/CD, añade el siguiente paso:
 ```bash
-composer run format:check
+composer format:check
 ```
 
 Esto fallará si el código no está correctamente formateado.

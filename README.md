@@ -38,23 +38,23 @@ npm run test:coverage     # Con reporte de cobertura
 ### 🎨 Formateo de Código
 ```bash
 # PHP (Laravel Pint)
-composer run format       # Auto-formatear
-composer run format:check # Solo verificar
+composer format       # Auto-formatear
+composer format:check # Solo verificar
 
 # JavaScript (ESLint)
-npm run lint             # Verificar
-npm run lint:fix         # Auto-corregir
+npm run lint          # Verificar
+npm run lint:fix      # Auto-corregir
 ```
 
 ### 🛡️ Análisis Estático
 ```bash
-composer run stan         # PHPStan análisis
-composer run stan:baseline # Generar baseline
+composer stan          # PHPStan análisis
+composer stan:baseline # Generar baseline
 ```
 
 ### ✅ Control de Calidad Completo
 ```bash
-composer run quality      # PHP: format + stan + tests
+composer quality       # PHP: format + stan + tests
 ```
 
 ### 🚫 Pre-commit Hook
@@ -83,8 +83,8 @@ Este proyecto está preparado para CI/CD. Pipeline recomendado:
 
 ### Backend (PHP)
 1. `composer install --no-dev --optimize-autoloader`
-2. `composer run format:check` - Validar formato
-3. `composer run stan` - Análisis estático
+2. `composer format:check` - Validar formato
+3. `composer stan` - Análisis estático
 4. `php artisan test` - Tests unitarios
 
 ### Frontend (JavaScript)
