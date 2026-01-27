@@ -1,24 +1,103 @@
-# Descripción del Cambio
+## 📝 Descripción del Cambio
 
-<!-- ¿Qué hace este PR? ¿Qué problema resuelve? -->
+<!-- Describe claramente qué cambios has realizado y por qué -->
+<!-- Sé específico y conciso -->
 
-# Tipo de Cambio
+### Problema que resuelve
+<!-- ¿Cuál es el problema o necesidad que aborda este PR? -->
 
--   [ ] 🐛 Bug fix (corrección de error no disruptiva)
--   [ ] ✨ New feature (nueva funcionalidad no disruptiva)
--   [ ] 💥 Breaking change (arreglo o funcionalidad que rompe compatibilidad)
+### Solución implementada
+<!-- ¿Cómo se ha resuelto? Explica la aproximación técnica -->
+
+---
+
+## 🏷️ Tipo de Cambio
+
+Selecciona uno o más:
+
+-   [ ] 🐛 Bug fix (corrección sin cambios disruptivos)
+-   [ ] ✨ New feature (nueva funcionalidad sin cambios disruptivos)
+-   [ ] 💥 Breaking change (cambios que rompen compatibilidad)
+-   [ ] 🔧 Refactor (mejora de código sin cambiar funcionalidad)
 -   [ ] 📝 Documentación
+-   [ ] ⚡ Performance (mejoras de rendimiento)
+-   [ ] 🔒 Seguridad (mejoras de seguridad)
 
-# ¿Cómo se ha probado?
+---
 
-<!-- Describe las pruebas realizadas para verificar tus cambios -->
+## 🔗 Referencias y Links
 
--   [ ] Pruebas Unitarias
--   [ ] Pruebas Manuales (Local)
+Cierra automáticamente:
+- Fixes: #(issue_number)
+- Related to: #(issue_number)
 
-# Checklist:
+<!-- Si no está vinculado a un issue, puedes dejarlo en blanco -->
 
--   [ ] Mi código sigue el estilo de este proyecto.
--   [ ] He realizado una auto-revisión de mi código.
--   [ ] Mis cambios no generan nuevas advertencias.
--   [ ] He añadido pruebas que demuestran que mi arreglo es efectivo o que mi funcionalidad funciona.
+---
+
+## 🧪 Pruebas Realizadas
+
+### Pruebas ejecutadas:
+
+-   [ ] ✅ Pruebas Unitarias
+-   [ ] ✅ Pruebas de Integración
+-   [ ] ✅ Pruebas Manuales (Local)
+-   [ ] ✅ Pruebas de Regresión
+
+### Ambiente de prueba:
+<!-- Describe el ambiente: Local, Staging, etc -->
+- **OS**: 
+- **PHP Version**: 
+- **Database**: 
+
+### Pasos para reproducir/verificar:
+<!-- Proporciona pasos detallados para verificar los cambios -->
+
+1. 
+2. 
+3. 
+
+---
+
+## 📸 Screenshots (si aplica)
+
+<!-- Si hay cambios en la UI, añade screenshots antes/después -->
+
+### Antes:
+<!-- Captura de pantalla del estado anterior -->
+
+### Después:
+<!-- Captura de pantalla del estado nuevo -->
+
+---
+
+## 📊 Impacto
+
+### Cambios en:
+-   [ ] Base de datos (¿necesita migración?)
+-   [ ] API (¿cambios en endpoints?)
+-   [ ] Frontend
+-   [ ] Dependencias (¿nuevos paquetes?)
+-   [ ] Seguridad
+
+### Performance:
+<!-- ¿Afecta al rendimiento? Mejora o degradación? -->
+
+---
+
+## ✅ Checklist Final
+
+-   [ ] Mi código sigue el estilo del proyecto
+-   [ ] He realizado una auto-revisión de mi código
+-   [ ] Mis cambios no generan advertencias
+-   [ ] Añadí/actualicé pruebas relevantes
+-   [ ] La cobertura de código no disminuyó
+-   [ ] Actualicé la documentación si es necesario
+-   [ ] Sin conflictos con la rama base
+-   [ ] Commits están bien formateados y descritos
+
+---
+
+## 🎯 Notas adicionales
+
+<!-- Cualquier información adicional que los reviewers deben saber -->
