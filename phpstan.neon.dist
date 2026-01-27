@@ -1,0 +1,20 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - phpstan-baseline.neon
+
+parameters:
+    level: 6
+    paths:
+        - app
+        - config
+        - database
+        - routes
+        - tests
+    excludePaths:
+        - storage/*
+        - bootstrap/cache/*
+        - public/build/*
+        - vendor/*
+        - node_modules/*
+    tmpDir: storage/framework/cache/phpstan
+    reportUnmatchedIgnoredErrors: true

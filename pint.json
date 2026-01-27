@@ -1,0 +1,20 @@
+{
+    "preset": "laravel",
+    "paths": [
+        "app",
+        "config",
+        "database",
+        "resources",
+        "routes",
+        "tests"
+    ],
+    "rules": {
+        "single_quote": true,
+        "no_trailing_comma_in_singleline": true,
+        "trailing_comma_in_multiline": true,
+        "no_useless_else": true,
+        "no_extra_blank_lines": true,
+        "spaces_inside_parentheses": false,
+        "space_after_semicolon": true
+    }
+}
