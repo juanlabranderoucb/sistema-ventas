@@ -24,8 +24,19 @@ class HealthTest extends TestCase
 
         $res->assertJsonStructure([
             'status',
-            'app' => ['env', 'debug'],
-            'db' => ['ok', 'latency_ms', 'driver'],
+            'timestamp',
+            'environment',
+            'version',
+            'commit',
+            'branch',
+            'deployed_at',
+            'app' => ['name', 'env', 'debug'],
+            'checks' => [
+                'db' => ['ok', 'latency_ms', 'driver'],
+                'cache' => ['ok', 'driver'],
+                'storage' => ['ok', 'writable'],
+                'queue' => ['ok', 'driver'],
+            ],
         ]);
     }
 }
