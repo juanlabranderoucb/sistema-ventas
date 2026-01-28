@@ -150,9 +150,3 @@ jobs:
 
       - name: Run Vitest Tests
         run: npm run test
-
-      - name: Download Frontend Build
-        uses: actions/download-artifact@v4
-        with:
-          name: frontend-build
-          path: public/build/
