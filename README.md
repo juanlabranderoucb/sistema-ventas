@@ -77,27 +77,71 @@ Consulta guías detalladas:
 - [PINT_GUIDE.md](PINT_GUIDE.md) - Formateo PHP
 - [VITEST_GUIDE.md](VITEST_GUIDE.md) - Tests de componentes Vue
 
-## 🔄 Integración Continua (CI/CD)
+## 🔄 Integración Continua y Deployment (CI/CD)
 
-Este proyecto está preparado para CI/CD. Pipeline recomendado:
+Este proyecto incluye un pipeline completo de CI/CD con GitHub Actions y Railway.app:
 
-### Backend (PHP)
-1. `composer install --no-dev --optimize-autoloader`
-2. `composer format:check` - Validar formato
-3. `composer stan` - Análisis estático
-4. `php artisan test` - Tests unitarios
+### 🔄 Pipeline de CI (Automático en push/PR a main)
 
-### Frontend (JavaScript)
-1. `npm ci` - Instalación limpia
-2. `npm run lint` - Validar código
-3. `npm run test` - Tests de componentes
-4. `npm run build` - Build producción
+1. **Build**: Construye el artefacto de la aplicación una sola vez
+2. **Quality Gates Backend**:
+   - `composer format:check` - Validar formato PSR-12
+   - `composer stan` - Análisis estático nivel 6
+3. **Quality Gates Frontend**:
+   - `npm run lint` - ESLint con --max-warnings=0
+   - `npm run test` - Tests de componentes con Vitest
+4. **Tests Backend**: `php artisan test`
 
-Consulta [CI_CD_TUTORIAL.md](CI_CD_TUTORIAL.md) para configuración detallada.
+### 🚀 Continuous Deployment
 
-Variables de entorno necesarias en CI:
-- `DB_CONNECTION`, `DB_HOST`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`
-- `APP_KEY`, `APP_ENV=testing`
+#### Staging (Automático)
+- **Trigger**: Push a `main` + CI exitoso
+- **Target**: Railway Staging Environment
+- **Health Check**: `/api/health` → 200 OK
+- **Logs**: Incluyen version, commit, ambiente, user_id
+
+#### Production (Manual con Aprobación)
+- **Trigger**: Manual workflow dispatch
+- **Requisitos**: 
+  - CI staging exitoso
+  - Aprobación humana requerida
+  - Confirmación escribiendo "DEPLOY"
+- **Features**:
+  - Backup automático de versión anterior
+  - Rollback automático si health check falla
+  - Smoke tests post-deployment
+
+### 📊 Observabilidad
+
+Todos los logs incluyen contexto completo:
+```json
+{
+  "environment": "production",
+  "release_version": "main-abc123-20260128",
+  "release_commit": "abc123",
+  "user_id": 5,
+  "request_id": "uuid",
+  "operation": "venta_registrada"
+}
+```
+
+### 📚 Documentación Detallada
+
+- [RAILWAY_SETUP_GUIDE.md](RAILWAY_SETUP_GUIDE.md) - Configuración completa de Railway
+- [CI_CD_TUTORIAL.md](CI_CD_TUTORIAL.md) - Pipeline de GitHub Actions
+- [PINT_GUIDE.md](PINT_GUIDE.md) - Formateo PHP
+- [VITEST_GUIDE.md](VITEST_GUIDE.md) - Tests de componentes Vue
+
+### 🎯 Secrets Requeridos
+
+GitHub Environments:
+- `staging`: `RAILWAY_STAGING_TOKEN`
+- `production`: `RAILWAY_PRODUCTION_TOKEN` (requiere aprobación)
+
+Variables Railway:
+- `APP_KEY`, `APP_ENV`, `APP_URL`
+- Database y Redis (auto-configuradas por Railway)
+- Release info (auto-configuradas por CI/CD)
 
 ## 📋 Requisitos Previos
 

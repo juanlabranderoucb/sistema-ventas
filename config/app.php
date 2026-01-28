@@ -123,4 +123,19 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Release Information
+    |--------------------------------------------------------------------------
+    |
+    | These values track the current deployment version and are set by the
+    | CI/CD pipeline during deployment. Used for logging and observability.
+    |
+    */
+
+    'release_version' => env('APP_RELEASE_VERSION'),
+    'release_commit' => env('APP_RELEASE_COMMIT'),
+    'release_branch' => env('APP_RELEASE_BRANCH'),
+    'release_timestamp' => env('APP_RELEASE_TIMESTAMP'),
+
 ];

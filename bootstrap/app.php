@@ -15,6 +15,9 @@ return Application::configure(basePath: dirname(__DIR__))
         // Headers de Seguridad Globales
         $middleware->append(App\Http\Middleware\SecurityHeadersMiddleware::class);
 
+        // Log context para observabilidad (release version, user_id, etc.)
+        $middleware->append(App\Http\Middleware\LogRequestContext::class);
+
         // Stateful para Sanctum (si se usa SPA, pero aquí es API stateless principalmente,
         // aunque sanctum puede gestionar cookie auth. Lo dejaremos por defecto).
     })

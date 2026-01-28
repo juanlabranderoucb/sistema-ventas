@@ -14,6 +14,7 @@ use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Controlador API para gestión de Compras
@@ -88,6 +89,15 @@ class CompraController extends Controller
             DB::commit();
 
             $compra->load(['proveedor.persona', 'detalles.producto']);
+
+            // Log de operación de compra con contexto
+            Log::info('Compra registrada', [
+                'compra_id' => $compra->id,
+                'codigo' => $compra->codigo,
+                'proveedor_id' => $compra->proveedor_id,
+                'total' => $compra->total,
+                'detalles_count' => count($request->detalles),
+            ]);
 
             AuditLogger::insercion("Compra creada: {$compra->codigo} (Proveedor ID: {$compra->proveedor_id})", $request->input('detalles'));
 

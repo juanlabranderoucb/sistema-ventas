@@ -42,13 +42,17 @@ class HealthController extends Controller
         return response()->json([
             'status' => $healthy ? 'ok' : 'degraded',
             'timestamp' => now()->toIso8601String(),
+            'environment' => config('app.env'),
+            'version' => config('app.release_version', config('app.version', '1.0.0')),
+            'commit' => config('app.release_commit', 'unknown'),
+            'branch' => config('app.release_branch', 'unknown'),
+            'deployed_at' => config('app.release_timestamp', 'unknown'),
             'app' => [
                 'name' => config('app.name'),
                 'env' => config('app.env'),
                 'debug' => (bool) config('app.debug'),
-                'version' => config('app.version', '1.0.0'),
             ],
-            ...$checks,
+            'checks' => $checks,
         ], $healthy ? 200 : 503);
     }
 
