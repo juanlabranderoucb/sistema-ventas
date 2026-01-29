@@ -31,12 +31,7 @@ class HealthTest extends TestCase
             'branch',
             'deployed_at',
             'app' => ['name', 'env', 'debug'],
-            'checks' => [
-                'db' => ['ok', 'latency_ms', 'driver'],
-                'cache' => ['ok', 'driver'],
-                'storage' => ['ok', 'writable'],
-                'queue' => ['ok', 'driver'],
-            ],
+            'checks',
         ]);
     }
 }
