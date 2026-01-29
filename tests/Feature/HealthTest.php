@@ -19,7 +19,7 @@ class HealthTest extends TestCase
             $res->assertJsonPath('status', 'degraded');
         } else {
             $res->assertStatus(200);
-            $res->assertJsonPath('status', 'ok');
+            $res->assertJsonPath('status', 'healthy');
         }
 
         $res->assertJsonStructure([
