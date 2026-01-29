@@ -2,6 +2,8 @@
 
 Sistema web integral para la gestión de ventas, compras, inventario, clientes y proveedores. Desarrollado con **Laravel 11** (API Backend) y **Vue 3** (Frontend), utilizando **PostgreSQL** como base de datos.
 
+> 🔒 **Proyecto con protección de ramas**: Los pull requests requieren aprobación antes de fusionarse.
+
 ## 🚀 Características Principales
 
 -   **Gestión de Productos**: Control de inventario, categorías, alertas de stock bajo y manejo de imágenes.
